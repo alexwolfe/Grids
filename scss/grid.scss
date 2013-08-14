@@ -1,0 +1,120 @@
+@import 'options'; // EDIT STYLES AND OPTIONS IN _options.scss
+
+
+//////////////////////////////////////////////////////////
+// FUNCTIONS /////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+
+//FLUID COLUMN CALCULATOR
+@function calculate-fluid-column($i) {
+    $multiplier: $i - 1;
+    @return (6 + (8 * $multiplier)) * $fluid-unit;
+}
+
+//FIXED COLUMN CALCULATOR
+@function calculate-fixed-column($i) {
+    $num_of_margins: ($i - 1) * 2;
+
+    //MULTI WIDTH OF COLUMNS BY NUMBER OF MARGINS SWALLOWED BY COLUMN
+    @return ($fixed-column-width *  $i) + ($margin * $num_of_margins);
+}
+
+//CREATE A COMMA SEPERATED LIST CLASSES FOR LENGTH OF GRID
+//RETURNS: .c1, .c2, .c3, .c4, .c5, etc...
+@function create-list-names($length, $class-name) {
+    $list: '';
+
+    @for $i from 1 through $length {
+
+        //For the first item don't include the comma or concat
+        @if $i == 1 {
+            $list: #{$class-name}$i;
+        }
+        @else {
+            $list: #{$list}, #{$class-name}$i;
+        }
+    }
+
+    @return $list;
+}
+
+
+//////////////////////////////////////////////////////////
+// BASE STYLES ///////////////////////////////////////////
+//////////////////////////////////////////////////////////
+#{$grid-namespace}-fixed, #{$grid-namespace}-fluid {
+    margin: 0 auto;
+    $full-list: create-list-names(12, $column-namespace);
+
+    #{$full-list} {
+        display: inline;
+        float: left;
+
+        &.grid-right {
+            float: right;
+        }
+    }
+}
+
+
+//////////////////////////////////////////////////////////
+// CLEARING //////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+.clearfix, #{$grid-namespace}-fixed, #{$grid-namespace}-fluid {
+    *zoom: 1;
+
+    &:after, &:before {
+      content: '.';
+      clear: both;
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      font-size: 0;
+      line-height: 0;
+      width: 0;
+      height: 0;
+    }
+}
+.clear {
+  clear: both;
+}
+
+
+//////////////////////////////////////////////////////////
+// GENERATE FLUID GRID ///////////////////////////////////
+//////////////////////////////////////////////////////////
+#{$grid-namespace}-fluid {
+    .c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12 {
+      margin-right: $fluid-unit;
+      margin-left: $fluid-unit;
+    }
+
+    //LOOP THROUGH AND CREATE COLUMNS
+    $grid-size: 12;
+
+    @for $i from 1 through $grid-size {
+        #{$column-namespace}#{$i} {
+            width: calculate-fluid-column($i);
+        }
+    }
+}
+
+//////////////////////////////////////////////////////////
+// GENERATE FIXED GRID ///////////////////////////////////
+//////////////////////////////////////////////////////////
+#{$grid-namespace}-fixed {
+    .c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12 {
+      margin-right: $fluid-unit;
+      margin-left: $fluid-unit;
+    }
+
+
+    //LOOP THROUGH AND CREATE COLUMNS
+    $grid-size: 12;
+
+    @for $i from 1 through $grid-size {
+        #{$column-namespace}#{$i} {
+            width: calculate-fixed-column($i);
+        }
+    }
+}
