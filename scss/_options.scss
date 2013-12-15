@@ -5,14 +5,14 @@ $unicorn-grid-namespace: '.grid' !default;
 $unicorn-grid-after-namespace: '.a' !default;
 $unicorn-grid-before-namespace: '.b' !default;
 $unicorn-grid-column-namespace: '.c' !default;  //EX c1, c2, c3, etc. for column class.
-$unicorn-grid-num-columns: 16 !default;
+$unicorn-grid-num-columns: 12 !default;
 
 
 //////////////////////////////////////////////////////////
 // FIXED GRID OPTIONS ////////////////////////////////////
 //////////////////////////////////////////////////////////
 $unicorn-grid-fixed-grid-size: 960px !default;
-$unicorn-grid-fixed-margin: 20px !default;
+$unicorn-grid-fixed-margin: 10px !default;
 
 //////////////////////////////////////////////////////////
 // FLUID GRID OPTIONS ////////////////////////////////////
