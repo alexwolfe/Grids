@@ -1,50 +1,14 @@
-@import 'options'; // EDIT STYLES AND OPTIONS IN _options.scss
+@import 'options';
+@import 'mixins';
 
-
-//////////////////////////////////////////////////////////
-// FUNCTIONS /////////////////////////////////////////////
-//////////////////////////////////////////////////////////
-
-//FLUID COLUMN CALCULATOR
-@function calculate-fluid-column($i) {
-    $multiplier: $i - 1;
-    @return (6 + (8 * $multiplier)) * $fluid-unit;
-}
-
-//FIXED COLUMN CALCULATOR
-@function calculate-fixed-column($i) {
-    $num_of_margins: ($i - 1) * 2;
-
-    //MULTI WIDTH OF COLUMNS BY NUMBER OF MARGINS SWALLOWED BY COLUMN
-    @return ($fixed-column-width *  $i) + ($margin * $num_of_margins);
-}
-
-//CREATE A COMMA SEPERATED LIST CLASSES FOR LENGTH OF GRID
-//RETURNS: .c1, .c2, .c3, .c4, .c5, etc...
-@function create-list-names($length, $class-name) {
-    $list: '';
-
-    @for $i from 1 through $length {
-
-        //For the first item don't include the comma or concat
-        @if $i == 1 {
-            $list: #{$class-name}$i;
-        }
-        @else {
-            $list: #{$list}, #{$class-name}$i;
-        }
-    }
-
-    @return $list;
-}
 
 
 //////////////////////////////////////////////////////////
 // BASE STYLES ///////////////////////////////////////////
 //////////////////////////////////////////////////////////
-#{$grid-namespace}-fixed, #{$grid-namespace}-fluid {
+%grid {
     margin: 0 auto;
-    $full-list: create-list-names(12, $column-namespace);
+    $full-list: create-list-names(12, $unicorn-grid-column-namespace);
 
     #{$full-list} {
         display: inline;
@@ -53,14 +17,21 @@
         &.grid-right {
             float: right;
         }
+        &.nb {
+          margin-left: 0;
+        }
+        &.na {
+          margin-right: 0;
+        }
     }
 }
+
 
 
 //////////////////////////////////////////////////////////
 // CLEARING //////////////////////////////////////////////
 //////////////////////////////////////////////////////////
-.clearfix, #{$grid-namespace}-fixed, #{$grid-namespace}-fluid {
+%clearfix {
     *zoom: 1;
 
     &:after, &:before {
@@ -80,41 +51,81 @@
 }
 
 
+
 //////////////////////////////////////////////////////////
 // GENERATE FLUID GRID ///////////////////////////////////
 //////////////////////////////////////////////////////////
-#{$grid-namespace}-fluid {
-    .c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12 {
+
+#{$unicorn-grid-namespace}-fluid {
+    @extend %grid;
+    @extend %clearfix;
+
+    //CREATES A LIST (.c1, .c2, .c3)
+    $full-list: create-list-names($unicorn-grid-num-columns, $unicorn-grid-column-namespace);
+
+    //CALCULATE FLUID VARIABLES
+    $num-margins: $unicorn-grid-num-columns * 2;
+    $num-fluid-units: $num-margins + ($unicorn-grid-num-columns * $unicorn-grid-fluid-gutter);
+    $fluid-unit: (100% / $num-fluid-units);
+
+    #{$full-list} {
       margin-right: $fluid-unit;
       margin-left: $fluid-unit;
     }
 
     //LOOP THROUGH AND CREATE COLUMNS
-    $grid-size: 12;
+    @for $i from 1 through $unicorn-grid-num-columns {
+        #{$unicorn-grid-column-namespace}#{$i} {
+            width: calculate-fluid-column($i, $fluid-unit);
+        }
 
-    @for $i from 1 through $grid-size {
-        #{$column-namespace}#{$i} {
-            width: calculate-fluid-column($i);
+        #{$unicorn-grid-before-namespace}#{$i} {
+            margin-left: calculate-fluid-spacer($i, $fluid-unit);
+        }
+
+        #{$unicorn-grid-after-namespace}#{$i} {
+            margin-right: calculate-fluid-spacer($i, $fluid-unit);
         }
     }
 }
+
+
 
 //////////////////////////////////////////////////////////
 // GENERATE FIXED GRID ///////////////////////////////////
 //////////////////////////////////////////////////////////
-#{$grid-namespace}-fixed {
-    .c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12 {
-      margin-right: $fluid-unit;
-      margin-left: $fluid-unit;
+
+#{$unicorn-grid-namespace}-fixed {
+    @extend %grid;
+    @extend %clearfix;
+    width: $unicorn-grid-fixed-grid-size;
+
+    //CREATES A LIST (.c1, .c2, .c3)
+    $full-list: create-list-names($unicorn-grid-num-columns, $unicorn-grid-column-namespace);
+
+    //CALCULATE GRID SIZE
+    $num-margins: $unicorn-grid-num-columns * 2;
+    $remaining-space: $unicorn-grid-fixed-grid-size - ($num-margins * $unicorn-grid-fixed-margin);
+    $column-width: floor($remaining-space / $unicorn-grid-num-columns);
+
+    #{$full-list} {
+      margin-right: $unicorn-grid-fixed-margin;
+      margin-left: $unicorn-grid-fixed-margin;
     }
 
-
     //LOOP THROUGH AND CREATE COLUMNS
-    $grid-size: 12;
+    @for $i from 1 through $unicorn-grid-num-columns {
+        #{$unicorn-grid-column-namespace}#{$i} {
+            width: calculate-fixed-column($i, $column-width);
+        }
 
-    @for $i from 1 through $grid-size {
-        #{$column-namespace}#{$i} {
-            width: calculate-fixed-column($i);
+        #{$unicorn-grid-before-namespace}#{$i} {
+            margin-left: calculate-fixed-spacer($i, $column-width);
+        }
+
+        #{$unicorn-grid-after-namespace}#{$i} {
+            margin-right: calculate-fixed-spacer($i, $column-width);
         }
     }
 }
+@import 'responsive';

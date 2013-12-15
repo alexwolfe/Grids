@@ -1,4 +1,5 @@
-@import 'mixins';
+@import 'compass';
+@import "compass/css3";
 
 $background: #f4f4f4;
 $border: #EEE;
@@ -43,7 +44,6 @@ body {
 
 // NAVIGATION /////////////////////////
 nav {
-    @include opacity(.9);
     border-top: 2px solid $highlight;
     background: #FFF;
     padding: 0px;
@@ -60,8 +60,7 @@ nav {
         list-style-type: none;
 
         li {
-            @include transition($duration: 0.2s);
-            float: left;
+                float: left;
             margin-bottom: -3px;
 
             &.selected {
@@ -167,7 +166,6 @@ header {
     //BUTTON SHOWCASE /////////////////////////
     .showcase {
         @include border-radius(10px);
-        background: $background;
         margin: 0px 0px 60px 0px;
         position: relative;
 
@@ -322,15 +320,14 @@ footer {
 
 .grid-fixed, .grid-fluid {
     @include border-radius(3px);
-    @include inner_shadow(0px, 1px, 2px, rgba(0, 0, 0, .2));
     background: #fff url(../images/old_mathematics.png) top left repeat;
     margin-bottom: 40px;
 
     .c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12 {
         @include border-radius(3px);
-        @include box-shadow(1px, 3px, rgba(0, 0, 0, .2));
-        @include linear-gradient(#FFF, #EEE);
-        display: inline-block;
+        @include box-shadow(0 1px 3px rgba(0, 0, 0, .2));
+        @include background(linear-gradient(#FFF, #EEE));
+        background-color: #EEE;
         text-align: center;
         line-height: 50px;
         font-size: 12px;

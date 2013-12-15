@@ -1,0 +1,40 @@
+/* VARAIBLES
+ * ============================================= */
+/* FONT MIXINS
+ * ============================================= */
+/* BORDER MIXINS
+ * ============================================= */
+/* GRADIENT MIXINS
+ * ============================================= */
+/* SHADOW MIXINS
+ * ============================================= */
+.grid-fixed, .grid-fluid {
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+  background: white url(../images/old_mathematics.png) top left repeat;
+  margin-bottom: 40px; }
+  .grid-fixed .c1, .grid-fixed .c2, .grid-fixed .c3, .grid-fixed .c4, .grid-fixed .c5, .grid-fixed .c6, .grid-fixed .c7, .grid-fixed .c8, .grid-fixed .c9, .grid-fixed .c10, .grid-fixed .c11, .grid-fixed .c12, .grid-fluid .c1, .grid-fluid .c2, .grid-fluid .c3, .grid-fluid .c4, .grid-fluid .c5, .grid-fluid .c6, .grid-fluid .c7, .grid-fluid .c8, .grid-fluid .c9, .grid-fluid .c10, .grid-fluid .c11, .grid-fluid .c12 {
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    background: white;
+    background: -moz-linear-gradient(100% 100% 90deg, #eeeeee, white);
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, from(white), to(#eeeeee));
+    background: -o-linear-gradient(white, #eeeeee);
+    text-align: center;
+    line-height: 50px;
+    font-size: 12px;
+    font-family: Verdana, Arial, sans-serif;
+    color: #999;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-shadow: 0px 1px 0px #FFF; }

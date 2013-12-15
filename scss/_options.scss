@@ -1,21 +1,28 @@
 //////////////////////////////////////////////////////////
 // BASE DEFAULTS /////////////////////////////////////////
 //////////////////////////////////////////////////////////
-$grid-namespace: '.grid';
-$after-namespace: '.a';
-$before-namespace: '.b';
-$column-namespace: '.c';  //EX c1, c2, c3, etc. for column class.
+$unicorn-grid-namespace: '.grid' !default;
+$unicorn-grid-after-namespace: '.a' !default;
+$unicorn-grid-before-namespace: '.b' !default;
+$unicorn-grid-column-namespace: '.c' !default;  //EX c1, c2, c3, etc. for column class.
+$unicorn-grid-num-columns: 16 !default;
 
 
 //////////////////////////////////////////////////////////
 // FIXED GRID OPTIONS ////////////////////////////////////
 //////////////////////////////////////////////////////////
-$fixed-column-width: 60px;
-$fixed-grid-size: 960px;
-$margin: 10px;
-$columns: 12, 16, 24;
+$unicorn-grid-fixed-grid-size: 960px !default;
+$unicorn-grid-fixed-margin: 20px !default;
 
 //////////////////////////////////////////////////////////
 // FLUID GRID OPTIONS ////////////////////////////////////
 //////////////////////////////////////////////////////////
-$fluid-unit: 1.04165%;
+//value from 1-10 (bigger makes gutter smaller, default based on 960 grid ratio)
+$unicorn-grid-fluid-gutter: 6 !default;
+
+//////////////////////////////////////////////////////////
+// RESPONSIVE OPTIONS ////////////////////////////////////
+//////////////////////////////////////////////////////////
+$unicorn-grid-responsive: 'enabled' !default;
+$unicorn-grid-small-breakpoint: 480px !default;
+$unicorn-grid-tablet-breakpoint: 900px !default;
