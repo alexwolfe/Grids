@@ -1,0 +1,21 @@
+{
+  "name": "Grids",
+  "version": "0.30",
+  "homepage": "https://github.com/alexwolfe/Grids",
+  "authors": [
+    "alexwolfe", 
+    "roblevintennis"
+  ],
+  "description": "A highly customizable CSS Grid Framework built with Sass",
+  "main": "css/grids.css",
+  "keywords": [
+    "Grids",
+    "Grid",
+    "Sass",
+    "scss",
+    "css",
+    "Css Grid",
+    "Sass Grid"
+  ],
+  "license": "Apache License v2.0"
+}
