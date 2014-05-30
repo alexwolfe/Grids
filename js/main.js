@@ -3,33 +3,33 @@ $(document).ready(function(){
     //CREATE PAGE METHODS
     var page = {
         init: function() {
-            this.buttons = $('#main-nav a');
+            this.grids = $('#main-nav a');
 
             this.activateNav();
-            this.disableDemoButtons();
+            this.disableDemoGrids();
         },
 
         activateNav: function() {
             var that = this;
 
-            this.buttons.click(function(e) {
+            this.grids.click(function(e) {
                 e.preventDefault();
-                var currentButton = $(e.currentTarget);
-                var buttonId = currentButton.attr('href');
+                var currentGrid = $(e.currentTarget);
+                var gridId = currentGrid.attr('href');
 
-                //DESELECT ALL BUTTONS & SELECT CURRRENT ONE
-                that.buttons.parent().removeClass('selected');
-                currentButton.parent().addClass('selected');
+                //DESELECT ALL Grids & SELECT CURRRENT ONE
+                that.grids.parent().removeClass('selected');
+                currentGrid.parent().addClass('selected');
 
                 //ANIMATE SCROLL EFFECT
                 $("html, body").animate({
-                    scrollTop: $(buttonId).offset().top - 100
+                    scrollTop: $(gridId).offset().top - 100
                 }, 'slow');
 
             });
         },
 
-        disableDemoButtons: function() {
+        disableDemoGrids: function() {
             $('.showcase .button').on('click', function(e) {
                 e.preventDefault();
             });
