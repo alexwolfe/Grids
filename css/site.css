@@ -107,14 +107,14 @@ header hgroup h1 {
   margin: 0px 10px 0px 10px;
   line-height: 150px;
   color: #333;
-  text-shadow: 0px 1px 0px white;
+  text-shadow: 0px 1px 0px #FFF;
 }
 /* line 120, ../scss/site.scss */
 header hgroup h2 {
   color: #999;
   font-weight: normal;
   margin: 0px 10px 20px 10px;
-  text-shadow: 0px 1px 0px white;
+  text-shadow: 0px 1px 0px #FFF;
 }
 @media only screen and (max-width: 480px) {
   /* line 128, ../scss/site.scss */
@@ -231,7 +231,7 @@ header .button-download {
   font-weight: 100;
   font-size: 60px;
   color: #CCC;
-  text-shadow: 0px 1px 0px white;
+  text-shadow: 0px 1px 0px #FFF;
   margin: 0px 0px 20px 0px;
   line-height: 60px;
 }
@@ -324,7 +324,7 @@ footer a {
   margin-bottom: 40px;
 }
 /* line 326, ../scss/site.scss */
-.grid-fixed .c1, .grid-fixed .c2, .grid-fixed .c3, .grid-fixed .c4, .grid-fixed .c5, .grid-fixed .c6, .grid-fixed .c7, .grid-fixed .c8, .grid-fixed .c9, .grid-fixed .c10, .grid-fixed .c11, .grid-fixed .c12, .grid-fluid .c1, .grid-fluid .c2, .grid-fluid .c3, .grid-fluid .c4, .grid-fluid .c5, .grid-fluid .c6, .grid-fluid .c7, .grid-fluid .c8, .grid-fluid .c9, .grid-fluid .c10, .grid-fluid .c11, .grid-fluid .c12 {
+.grid-fixed .c1, .grid-fixed .c2, .grid-fixed .c3, .grid-fixed .c4, .grid-fixed .c5, .grid-fixed .c6, .grid-fixed .c7, .grid-fixed .c8, .grid-fixed .c9, .grid-fixed .c10, .grid-fixed .c11, .grid-fixed .c12, .grid-fixed .c13, .grid-fixed .c14, .grid-fixed .c15, .grid-fixed .c16, .grid-fluid .c1, .grid-fluid .c2, .grid-fluid .c3, .grid-fluid .c4, .grid-fluid .c5, .grid-fluid .c6, .grid-fluid .c7, .grid-fluid .c8, .grid-fluid .c9, .grid-fluid .c10, .grid-fluid .c11, .grid-fluid .c12, .grid-fluid .c13, .grid-fluid .c14, .grid-fluid .c15, .grid-fluid .c16 {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
@@ -346,7 +346,7 @@ footer a {
   color: #7db500;
   margin-top: 10px;
   margin-bottom: 10px;
-  text-shadow: 0px 1px 0px white;
+  text-shadow: 0px 1px 0px #FFF;
 }
 
 @media only screen and (max-width: 480px) {
@@ -367,7 +367,7 @@ footer a {
   nav ul li {
     float: none;
     display: block;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid #EEE;
   }
   /* line 365, ../scss/site.scss */
   nav ul li.home {
@@ -380,7 +380,7 @@ footer a {
   }
   /* line 374, ../scss/site.scss */
   nav ul li.selected {
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid #EEE;
   }
   /* line 378, ../scss/site.scss */
   nav ul li a {
