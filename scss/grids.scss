@@ -8,7 +8,7 @@
 //////////////////////////////////////////////////////////
 %grid {
     margin: 0 auto;
-    $full-list: create-list-names(12, $unicorn-grid-column-namespace);
+    $full-list: create-list-names($unicorn-grid-num-columns, $unicorn-grid-column-namespace);
 
     #{$full-list} {
         display: inline;
