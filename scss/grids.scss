@@ -6,10 +6,7 @@
 //////////////////////////////////////////////////////////
 // BASE STYLES ///////////////////////////////////////////
 //////////////////////////////////////////////////////////
-%grid {
-    margin: 0 auto;
-    $full-list: create-list-names($unicorn-grid-num-columns, $unicorn-grid-column-namespace);
-
+@mixin full-list-boiler ($full-list) {
     #{$full-list} {
         display: inline;
         float: left;
@@ -26,12 +23,33 @@
     }
 }
 
+%grid {
+    margin: 0 auto;
+    $full-list: create-list-names($unicorn-grid-num-columns, $unicorn-grid-column-namespace);
+    @include full-list-boiler ($full-list);
+}
 
+//////////////////////////////////////////////////////////
+// PHONE/TABLET //////////////////////////////////////////
+//////////////////////////////////////////////////////////
+// Note that these can't be placeholders since we're using
+// them from within the media query (that's why using mixins)
+@mixin grid-phone {
+    margin: 0 auto;
+    $full-list: create-list-names($unicorn-grid-num-columns, $unicorn-grid-small-column-namespace);
+    @include full-list-boiler ($full-list);
+}
+
+@mixin grid-tablet {
+    margin: 0 auto;
+    $full-list: create-list-names($unicorn-grid-num-columns, $unicorn-grid-tablet-column-namespace);
+    @include full-list-boiler ($full-list);
+}
 
 //////////////////////////////////////////////////////////
 // CLEARING //////////////////////////////////////////////
 //////////////////////////////////////////////////////////
-%clearfix {
+@mixin clearfix {
     *zoom: 1;
 
     &:after, &:before {
@@ -46,10 +64,10 @@
       height: 0;
     }
 }
+
 .clear {
   clear: both;
 }
-
 
 
 //////////////////////////////////////////////////////////
@@ -58,7 +76,7 @@
 
 #{$unicorn-grid-namespace}-fluid {
     @extend %grid;
-    @extend %clearfix;
+    @include clearfix;
 
     //CREATES A LIST (.c1, .c2, .c3)
     $full-list: create-list-names($unicorn-grid-num-columns, $unicorn-grid-column-namespace);
@@ -97,7 +115,7 @@
 
 #{$unicorn-grid-namespace}-fixed {
     @extend %grid;
-    @extend %clearfix;
+    @include clearfix;
     width: $unicorn-grid-fixed-grid-size;
 
     //CREATES A LIST (.c1, .c2, .c3)

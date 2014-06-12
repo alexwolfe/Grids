@@ -4,25 +4,147 @@
 @if($unicorn-grid-responsive == 'enabled') {
 
     #{$unicorn-grid-namespace}-fixed, #{$unicorn-grid-namespace}-fluid {
-        @media handheld and (max-width: $unicorn-grid-small-breakpoint),
-        screen and (max-device-width: $unicorn-grid-small-breakpoint),
-        screen and (max-width: $unicorn-grid-tablet-breakpoint) {
-            width: auto;
-        }
+
+
+        // @media handheld and (max-width: $unicorn-grid-small-breakpoint),
+        // screen and (max-device-width: $unicorn-grid-small-breakpoint),
+        // screen and (max-width: $unicorn-grid-tablet-breakpoint) {
+        //     width: auto;
+        // }
 
         //CREATES A LIST (.c1, .c2, .c3)
-        $full-list: create-list-names($unicorn-grid-num-columns, $unicorn-grid-column-namespace);
+        // $full-list: create-list-names($unicorn-grid-num-columns, $unicorn-grid-column-namespace);
 
-        #{$full-list} {
-            @media handheld and (max-width: $unicorn-grid-small-breakpoint),
-            screen and (max-device-width: $unicorn-grid-small-breakpoint),
-            screen and (max-width: $unicorn-grid-tablet-breakpoint) {
-                margin-left: 20px;
-                margin-right: 20px;
-                float: none;
-                display: block;
-                width: auto;
+        // #{$full-list} {
+        //     @media handheld and (max-width: $unicorn-grid-small-breakpoint),
+        //     screen and (max-device-width: $unicorn-grid-small-breakpoint),
+        //     screen and (max-width: $unicorn-grid-tablet-breakpoint) {
+        //         margin-left: 20px;
+        //         margin-right: 20px;
+        //         float: none;
+        //         display: block;
+        //         width: auto;
+        //     }
+        // }
+
+
+
+
+
+        //////////////////////////////////////////////
+        // TABLET ////////////////////////////////////
+        //////////////////////////////////////////////
+        
+        @media handheld and (max-device-width: $unicorn-grid-tablet-breakpoint),
+        screen and (max-width: $unicorn-grid-tablet-breakpoint) {
+            @include grid-tablet;
+            @include clearfix;
+
+            $full-list: create-list-names($unicorn-grid-num-columns, $unicorn-grid-tablet-column-namespace);
+
+            //CALCULATE FLUID VARIABLES
+            $num-margins: $unicorn-grid-num-columns * 2;
+            $num-fluid-units: $num-margins + ($unicorn-grid-num-columns * $unicorn-grid-fluid-gutter);
+            $fluid-unit: (100% / $num-fluid-units);
+
+            #{$full-list} {
+              margin-right: $fluid-unit;
+              margin-left: $fluid-unit;
+            }
+
+            //LOOP THROUGH AND CREATE COLUMNS
+            @for $i from 1 through $unicorn-grid-num-columns {
+                #{$unicorn-grid-tablet-column-namespace}#{$i} {
+                    width: calculate-fluid-column($i, $fluid-unit);
+                }
+
+                #{$unicorn-grid-before-namespace}#{$i} {
+                    margin-left: calculate-fluid-spacer($i, $fluid-unit);
+                }
+
+                #{$unicorn-grid-after-namespace}#{$i} {
+                    margin-right: calculate-fluid-spacer($i, $fluid-unit);
+                }
             }
         }
+
+
+        //////////////////////////////////////////////
+        // PHONE /////////////////////////////////////
+        //////////////////////////////////////////////
+        
+        @media handheld and (max-device-width: $unicorn-grid-small-breakpoint),
+        screen and (max-width: $unicorn-grid-small-breakpoint) {
+            @include grid-phone;
+            @include clearfix;
+
+            $full-list: create-list-names($unicorn-grid-num-columns, $unicorn-grid-small-column-namespace);
+
+            //CALCULATE FLUID VARIABLES
+            $num-margins: $unicorn-grid-num-columns * 2;
+            $num-fluid-units: $num-margins + ($unicorn-grid-num-columns * $unicorn-grid-fluid-gutter);
+            $fluid-unit: (100% / $num-fluid-units);
+
+            #{$full-list} {
+              margin-right: $fluid-unit;
+              margin-left: $fluid-unit;
+            }
+
+            //LOOP THROUGH AND CREATE COLUMNS
+            @for $i from 1 through $unicorn-grid-num-columns {
+                #{$unicorn-grid-small-column-namespace}#{$i} {
+                    width: calculate-fluid-column($i, $fluid-unit);
+                }
+
+                #{$unicorn-grid-before-namespace}#{$i} {
+                    margin-left: calculate-fluid-spacer($i, $fluid-unit);
+                }
+
+                #{$unicorn-grid-after-namespace}#{$i} {
+                    margin-right: calculate-fluid-spacer($i, $fluid-unit);
+                }
+            }
+        }
+
+
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//TODO REMOVE THIS JUST FOR TESTING PURPOSES
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+
+
+        #{$unicorn-grid-namespace}-fixed, #{$unicorn-grid-namespace}-fluid {
+            @media handheld and (max-device-width: $unicorn-grid-small-breakpoint),
+            screen and (max-width: $unicorn-grid-small-breakpoint) {
+                background: lightblue !important;
+            }
+        }
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
