@@ -10,7 +10,6 @@
     #{$full-list} {
         display: inline;
         float: left;
-
         &.grid-right {
             float: right;
         }
@@ -23,7 +22,7 @@
     }
 }
 
-%grid {
+%grid-general {
     margin: 0 auto;
     $full-list: create-list-names($unicorn-grid-num-columns, $unicorn-grid-column-namespace);
     @include full-list-boiler ($full-list);
@@ -44,6 +43,45 @@
     margin: 0 auto;
     $full-list: create-list-names($unicorn-grid-num-columns, $unicorn-grid-tablet-column-namespace);
     @include full-list-boiler ($full-list);
+}
+
+
+//////////////////////////////////////////////////////////
+// GRID SPECIFIC STYLES //////////////////////////////////
+//////////////////////////////////////////////////////////
+@mixin grid-specific ($columnNamespace, $beforeNamespace: null, $afterNamespace: null) {
+
+    //CREATES A LIST (.c1, .c2, .c3)
+    $full-list: create-list-names($unicorn-grid-num-columns, $columnNamespace);
+
+    //CALCULATE FLUID VARIABLES
+    $num-margins: $unicorn-grid-num-columns * 2;
+    $num-fluid-units: $num-margins + ($unicorn-grid-num-columns * $unicorn-grid-fluid-gutter);
+    $fluid-unit: (100% / $num-fluid-units);
+
+    #{$full-list} {
+      margin-right: $fluid-unit;
+      margin-left: $fluid-unit;
+    }
+
+    //LOOP THROUGH AND CREATE COLUMNS
+    @for $i from 1 through $unicorn-grid-num-columns {
+        #{$columnNamespace}#{$i} {
+            width: calculate-fluid-column($i, $fluid-unit);
+        }
+
+        @if ($beforeNamespace) {
+            #{$beforeNamespace}#{$i} {
+                margin-left: calculate-fluid-spacer($i, $fluid-unit);
+            }
+        }
+
+        @if ($afterNamespace) {
+            #{$afterNamespace}#{$i} {
+                margin-right: calculate-fluid-spacer($i, $fluid-unit);
+            }
+        }
+    }
 }
 
 //////////////////////////////////////////////////////////
@@ -69,81 +107,25 @@
   clear: both;
 }
 
-
 //////////////////////////////////////////////////////////
 // GENERATE FLUID GRID ///////////////////////////////////
 //////////////////////////////////////////////////////////
 
 #{$unicorn-grid-namespace}-fluid {
-    @extend %grid;
+    @extend %grid-general;
     @include clearfix;
-
-    //CREATES A LIST (.c1, .c2, .c3)
-    $full-list: create-list-names($unicorn-grid-num-columns, $unicorn-grid-column-namespace);
-
-    //CALCULATE FLUID VARIABLES
-    $num-margins: $unicorn-grid-num-columns * 2;
-    $num-fluid-units: $num-margins + ($unicorn-grid-num-columns * $unicorn-grid-fluid-gutter);
-    $fluid-unit: (100% / $num-fluid-units);
-
-    #{$full-list} {
-      margin-right: $fluid-unit;
-      margin-left: $fluid-unit;
-    }
-
-    //LOOP THROUGH AND CREATE COLUMNS
-    @for $i from 1 through $unicorn-grid-num-columns {
-        #{$unicorn-grid-column-namespace}#{$i} {
-            width: calculate-fluid-column($i, $fluid-unit);
-        }
-
-        #{$unicorn-grid-before-namespace}#{$i} {
-            margin-left: calculate-fluid-spacer($i, $fluid-unit);
-        }
-
-        #{$unicorn-grid-after-namespace}#{$i} {
-            margin-right: calculate-fluid-spacer($i, $fluid-unit);
-        }
-    }
+    @include grid-specific ($unicorn-grid-column-namespace);
 }
-
-
 
 //////////////////////////////////////////////////////////
 // GENERATE FIXED GRID ///////////////////////////////////
 //////////////////////////////////////////////////////////
 
 #{$unicorn-grid-namespace}-fixed {
-    @extend %grid;
+    @extend %grid-general;
     @include clearfix;
     width: $unicorn-grid-fixed-grid-size;
-
-    //CREATES A LIST (.c1, .c2, .c3)
-    $full-list: create-list-names($unicorn-grid-num-columns, $unicorn-grid-column-namespace);
-
-    //CALCULATE GRID SIZE
-    $num-margins: $unicorn-grid-num-columns * 2;
-    $remaining-space: $unicorn-grid-fixed-grid-size - ($num-margins * $unicorn-grid-fixed-margin);
-    $column-width: floor($remaining-space / $unicorn-grid-num-columns);
-
-    #{$full-list} {
-      margin-right: $unicorn-grid-fixed-margin;
-      margin-left: $unicorn-grid-fixed-margin;
-    }
-
-    //LOOP THROUGH AND CREATE COLUMNS
-    @for $i from 1 through $unicorn-grid-num-columns {
-        #{$unicorn-grid-column-namespace}#{$i} {
-            width: calculate-fixed-column($i, $column-width);
-        }
-
-        #{$unicorn-grid-before-namespace}#{$i} {
-            margin-left: calculate-fixed-spacer($i, $column-width);
-        }
-
-        #{$unicorn-grid-after-namespace}#{$i} {
-            margin-right: calculate-fixed-spacer($i, $column-width);
-        }
-    }
+    @include grid-specific ($unicorn-grid-column-namespace);
 }
+
 @import 'responsive';
