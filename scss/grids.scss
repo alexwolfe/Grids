@@ -2,7 +2,6 @@
 @import 'mixins';
 
 
-
 //////////////////////////////////////////////////////////
 // BASE STYLES ///////////////////////////////////////////
 //////////////////////////////////////////////////////////
@@ -49,7 +48,7 @@
 //////////////////////////////////////////////////////////
 // GRID SPECIFIC STYLES //////////////////////////////////
 //////////////////////////////////////////////////////////
-@mixin grid-specific ($columnNamespace, $beforeNamespace: null, $afterNamespace: null) {
+@mixin fluid-grid-specific ($columnNamespace, $beforeNamespace: null, $afterNamespace: null) {
 
     //CREATES A LIST (.c1, .c2, .c3)
     $full-list: create-list-names($unicorn-grid-num-columns, $columnNamespace);
@@ -114,8 +113,9 @@
 #{$unicorn-grid-namespace}-fluid {
     @extend %grid-general;
     @include clearfix;
-    @include grid-specific ($unicorn-grid-column-namespace);
+    @include fluid-grid-specific ($unicorn-grid-column-namespace, $unicorn-grid-before-namespace, $unicorn-grid-after-namespace);
 }
+
 
 //////////////////////////////////////////////////////////
 // GENERATE FIXED GRID ///////////////////////////////////
@@ -125,7 +125,34 @@
     @extend %grid-general;
     @include clearfix;
     width: $unicorn-grid-fixed-grid-size;
-    @include grid-specific ($unicorn-grid-column-namespace);
+
+    //CREATES A LIST (.c1, .c2, .c3)
+    $full-list: create-list-names($unicorn-grid-num-columns, $unicorn-grid-column-namespace);
+
+    //CALCULATE GRID SIZE
+    $num-margins: $unicorn-grid-num-columns * 2;
+    $remaining-space: $unicorn-grid-fixed-grid-size - ($num-margins * $unicorn-grid-fixed-margin);
+    $column-width: floor($remaining-space / $unicorn-grid-num-columns);
+
+    #{$full-list} {
+      margin-right: $unicorn-grid-fixed-margin;
+      margin-left: $unicorn-grid-fixed-margin;
+    }
+
+    //LOOP THROUGH AND CREATE COLUMNS
+    @for $i from 1 through $unicorn-grid-num-columns {
+        #{$unicorn-grid-column-namespace}#{$i} {
+            width: calculate-fixed-column($i, $column-width);
+        }
+
+        #{$unicorn-grid-before-namespace}#{$i} {
+            margin-left: calculate-fixed-spacer($i, $column-width);
+        }
+
+        #{$unicorn-grid-after-namespace}#{$i} {
+            margin-right: calculate-fixed-spacer($i, $column-width);
+        }
+    }
 }
 
 @import 'responsive';

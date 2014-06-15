@@ -11,7 +11,7 @@
         // If they don't use phone-X, falls back to this
         //////////////////////////////////////////////////
         @media handheld and (max-width: $unicorn-grid-small-breakpoint),
-        screen and (max-device-width: $unicorn-grid-small-breakpoint),
+        screen and (max-width: $unicorn-grid-small-breakpoint),
         screen and (max-width: $unicorn-grid-tablet-breakpoint) {
             width: auto;
         }
@@ -21,7 +21,7 @@
 
         #{$full-list} {
             @media handheld and (max-width: $unicorn-grid-small-breakpoint),
-            screen and (max-device-width: $unicorn-grid-small-breakpoint),
+            screen and (max-width: $unicorn-grid-small-breakpoint),
             screen and (max-width: $unicorn-grid-tablet-breakpoint) {
                 margin-left: 20px;
                 margin-right: 20px;
@@ -32,67 +32,29 @@
         }
 
 
-
         //////////////////////////////////////////////
         // TABLET ////////////////////////////////////
         //////////////////////////////////////////////
-        
-        @media handheld and (max-device-width: $unicorn-grid-tablet-breakpoint),
+        @media handheld and (max-width: $unicorn-grid-tablet-breakpoint),
         screen and (max-width: $unicorn-grid-tablet-breakpoint) {
             @include grid-tablet;
             @include clearfix;
-            @include grid-specific ($unicorn-grid-tablet-column-namespace, $unicorn-grid-before-namespace, $unicorn-grid-after-namespace);
+            @include fluid-grid-specific ($unicorn-grid-tablet-column-namespace);
         }
 
         //////////////////////////////////////////////
         // PHONE /////////////////////////////////////
         //////////////////////////////////////////////
         
-        @media handheld and (max-device-width: $unicorn-grid-small-breakpoint),
+        @media handheld and (max-width: $unicorn-grid-small-breakpoint),
         screen and (max-width: $unicorn-grid-small-breakpoint) {
             @include grid-phone;
             @include clearfix;
-            @include grid-specific ($unicorn-grid-small-column-namespace, $unicorn-grid-before-namespace, $unicorn-grid-after-namespace);
-
+            @include fluid-grid-specific ($unicorn-grid-small-column-namespace);
         }
+
+
     }
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////
-//TODO REMOVE THIS JUST FOR TESTING PURPOSES
-//////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////
-
-
-        #{$unicorn-grid-namespace}-fixed, #{$unicorn-grid-namespace}-fluid {
-            @media handheld and (max-device-width: $unicorn-grid-small-breakpoint),
-            screen and (max-width: $unicorn-grid-small-breakpoint) {
-                background: lightblue !important;
-            }
-        }
-//////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////
