@@ -17,8 +17,10 @@
       <!--[if lt IE 9]><script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
 
 </head>
+
 <body>
   <article>
+    <h1>Default Fluid Behavior</h2>
     <section class="grid-fluid">
       <span class="c1">1</span>
       <span class="c1">1</span>
@@ -59,7 +61,12 @@
 
       <span class="c12">12</span>
     </section>
+  </article>
 
+  <article>
+    <h1>Fluid Behavior Using Phone and Tablet Classes</h2>
+    <p>Notice that if you omit tablet, the default fluid behavior will kick in (your column will become full width). If you narrow you viewport to about tablet width (~480w-900w), you should see the first four columns exhibiting this below.</p>
+    <p>So the "take-away" is if you choose to use phone-X for more control, you will likely want to also use tablet-X. Using phone-X and tablet-X together will likely result in a more predictable transition that you're expecting.</p>
     <section class="grid-fluid">
       <span class="c1 phone-c6"><small>1/small6</small></span>
       <span class="c1 phone-c6"><small>1/small6</small></span>
@@ -76,5 +83,7 @@
       <div class="clear"></div>
     </section>
   </article>
+
 </body>
+
 </html>

@@ -5,6 +5,34 @@
 
     #{$unicorn-grid-namespace}-fixed, #{$unicorn-grid-namespace}-fluid {
 
+
+        //////////////////////////////////////////////////
+        // PHONE FALLBACK ////////////////////////////////
+        // If they don't use phone-X, falls back to this
+        //////////////////////////////////////////////////
+        @media handheld and (max-width: $unicorn-grid-small-breakpoint),
+        screen and (max-device-width: $unicorn-grid-small-breakpoint),
+        screen and (max-width: $unicorn-grid-tablet-breakpoint) {
+            width: auto;
+        }
+
+        //CREATES A LIST (.c1, .c2, .c3)
+        $full-list: create-list-names($unicorn-grid-num-columns, $unicorn-grid-column-namespace);
+
+        #{$full-list} {
+            @media handheld and (max-width: $unicorn-grid-small-breakpoint),
+            screen and (max-device-width: $unicorn-grid-small-breakpoint),
+            screen and (max-width: $unicorn-grid-tablet-breakpoint) {
+                margin-left: 20px;
+                margin-right: 20px;
+                float: none;
+                display: block;
+                width: auto;
+            }
+        }
+
+
+
         //////////////////////////////////////////////
         // TABLET ////////////////////////////////////
         //////////////////////////////////////////////
