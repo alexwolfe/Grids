@@ -359,13 +359,13 @@
 }
 
 @media handheld and (max-width: 480px), screen and (max-width: 480px), screen and (max-width: 900px) {
-  /* line 6, ../scss/_responsive.scss */
+  /* line 31, ../scss/_responsive.scss */
   .grid-fixed, .grid-fluid {
     width: auto;
   }
 }
 @media handheld and (max-width: 480px), screen and (max-width: 480px), screen and (max-width: 900px) {
-  /* line 22, ../scss/_responsive.scss */
+  /* line 48, ../scss/_responsive.scss */
   .grid-fixed .c1, .grid-fixed .c2, .grid-fixed .c3, .grid-fixed .c4, .grid-fixed .c5, .grid-fixed .c6, .grid-fixed .c7, .grid-fixed .c8, .grid-fixed .c9, .grid-fixed .c10, .grid-fixed .c11, .grid-fixed .c12, .grid-fluid .c1, .grid-fluid .c2, .grid-fluid .c3, .grid-fluid .c4, .grid-fluid .c5, .grid-fluid .c6, .grid-fluid .c7, .grid-fluid .c8, .grid-fluid .c9, .grid-fluid .c10, .grid-fluid .c11, .grid-fluid .c12 {
     margin-left: 20px;
     margin-right: 20px;
@@ -375,7 +375,7 @@
   }
 }
 @media handheld and (max-width: 900px), screen and (max-width: 900px) {
-  /* line 6, ../scss/_responsive.scss */
+  /* line 31, ../scss/_responsive.scss */
   .grid-fixed, .grid-fluid {
     margin: 0 auto;
     *zoom: 1;
@@ -462,9 +462,39 @@
   .grid-fixed .tablet-c12, .grid-fluid .tablet-c12 {
     width: 97.91667%;
   }
+  /* line 9, ../scss/_responsive.scss */
+  .grid-fixed .tablet-show, .grid-fluid .tablet-show {
+    display: inherit !important;
+  }
+  /* line 10, ../scss/_responsive.scss */
+  .grid-fixed .tablet-hide, .grid-fluid .tablet-hide {
+    display: none !important;
+  }
+  /* line 12, ../scss/_responsive.scss */
+  .grid-fixed table.tablet-show, .grid-fluid table.tablet-show {
+    display: table;
+  }
+  /* line 15, ../scss/_responsive.scss */
+  .grid-fixed thead.tablet-show, .grid-fluid thead.tablet-show {
+    display: table-header-group !important;
+  }
+  /* line 18, ../scss/_responsive.scss */
+  .grid-fixed tbody.tablet-show, .grid-fluid tbody.tablet-show {
+    display: table-row-group !important;
+  }
+  /* line 21, ../scss/_responsive.scss */
+  .grid-fixed tr.tablet-show, .grid-fluid tr.tablet-show {
+    display: table-row !important;
+  }
+  /* line 25, ../scss/_responsive.scss */
+  .grid-fixed td.tablet-show,
+  .grid-fixed th.tablet-show, .grid-fluid td.tablet-show,
+  .grid-fluid th.tablet-show {
+    display: table-cell !important;
+  }
 }
 @media handheld and (max-width: 480px), screen and (max-width: 480px) {
-  /* line 6, ../scss/_responsive.scss */
+  /* line 31, ../scss/_responsive.scss */
   .grid-fixed, .grid-fluid {
     margin: 0 auto;
     *zoom: 1;
@@ -550,5 +580,35 @@
   /* line 68, ../scss/grids.scss */
   .grid-fixed .phone-c12, .grid-fluid .phone-c12 {
     width: 97.91667%;
+  }
+  /* line 9, ../scss/_responsive.scss */
+  .grid-fixed .phone-show, .grid-fluid .phone-show {
+    display: inherit !important;
+  }
+  /* line 10, ../scss/_responsive.scss */
+  .grid-fixed .phone-hide, .grid-fluid .phone-hide {
+    display: none !important;
+  }
+  /* line 12, ../scss/_responsive.scss */
+  .grid-fixed table.phone-show, .grid-fluid table.phone-show {
+    display: table;
+  }
+  /* line 15, ../scss/_responsive.scss */
+  .grid-fixed thead.phone-show, .grid-fluid thead.phone-show {
+    display: table-header-group !important;
+  }
+  /* line 18, ../scss/_responsive.scss */
+  .grid-fixed tbody.phone-show, .grid-fluid tbody.phone-show {
+    display: table-row-group !important;
+  }
+  /* line 21, ../scss/_responsive.scss */
+  .grid-fixed tr.phone-show, .grid-fluid tr.phone-show {
+    display: table-row !important;
+  }
+  /* line 25, ../scss/_responsive.scss */
+  .grid-fixed td.phone-show,
+  .grid-fixed th.phone-show, .grid-fluid td.phone-show,
+  .grid-fluid th.phone-show {
+    display: table-cell !important;
   }
 }
