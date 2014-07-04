@@ -19,6 +19,7 @@
 </head>
 
 <body>
+
   <article>
     <h1>Default Fluid Behavior</h2>
     <section class="grid-fluid">
@@ -55,6 +56,11 @@
       <span class="c4">4</span>
       <div class="clear"></div>
 
+      <span class="c3">3</span>
+      <span class="c3">3</span>
+      <span class="b3 c3" style="background: blue !important;">6</span>
+      <div class="clear"></div>
+
       <span class="c6">6</span>
       <span class="c6">6</span>
       <div class="clear"></div>
@@ -65,21 +71,45 @@
 
   <article>
     <h1>Fluid Behavior Using Phone and Tablet Classes</h2>
-    <p>Notice that if you omit tablet, the default fluid behavior will kick in (your column will become full width). If you narrow you viewport to about tablet width (~480w-900w), you should see the first four columns exhibiting this below.</p>
-    <p>So the "take-away" is if you choose to use phone-X for more control, you will likely want to also use tablet-X. Using phone-X and tablet-X together will likely result in a more predictable transition that you're expecting.</p>
+    <p>Notice that if you omit tablet, the default "fallback" fluid behavior will kick in (your column will essentially become width auto with 20px left and right hand margins). In fact, if you narrow you viewport to about tablet width (~480w-900w), you should see the first four columns exhibiting this below. You'll note that the fallback margins don't quite line up…</p> 
+    <p>The take-away is if you choose to use phone-X for more control, you will likely want to also use tablet-X. Using phone-X and tablet-X together will likely result in a more predictable transition that you're expecting and left and right hand margins that align.</p>
     <section class="grid-fluid">
-      <span class="c1 phone-c6"><small>1/small6</small></span>
-      <span class="c1 phone-c6"><small>1/small6</small></span>
-      <span class="c1 phone-c6"><small>1/small6</small></span>
-      <span class="c1 phone-c6"><small>1/small6</small></span>
-      <span class="c1 tablet-c2"><small>1/tab2</small></span>
-      <span class="c1 tablet-c2"><small>1/tab2</small></span>
-      <span class="c1 tablet-c2"><small>1/tab2</small></span>
-      <span class="c1 tablet-c2"><small>1/tab2</small></span>
-      <span class="c1 tablet-c4"><small>1/tab4</small></span>
-      <span class="c1 tablet-c4"><small>1/tab4</small></span>
-      <span class="c1 tablet-c4 phone-c6"><small>1/t4/s6</small></span>
-      <span class="c1 tablet-c4 phone-c6"><small>1/t4/s6</small></span>
+      <span class="c1 phone-c6"><small>c1/phone-c6</small></span>
+      <span class="c1 phone-c6"><small>c1/phone-c6</small></span>
+      <span class="c1 phone-c6"><small>c1/phone-c6</small></span>
+      <span class="c1 phone-c6"><small>c1/phone-c6</small></span>
+      <span class="c1 tablet-c2"><small>c1/tablet-c2</small></span>
+      <span class="c1 tablet-c2"><small>c1/tablet-c2</small></span>
+      <span class="c1 tablet-c2"><small>c1/tablet-c2</small></span>
+      <span class="c1 tablet-c2"><small>c1/tablet-c2</small></span>
+      <span class="c1 tablet-c4"><small>c1/tablet-c4</small></span>
+      <span class="c1 tablet-c4"><small>c1/tablet-c4</small></span>
+      <span class="c1 tablet-c4 phone-c6"><small>c1/t4/p6</small></span>
+      <span class="c1 tablet-c4 phone-c6"><small>c1/t4/p6</small></span>
+      <div class="clear"></div>
+    </section>
+  </article>
+
+  <article>
+    <h1>Fluid With Visible/Hidden on Phone or Tablet</h2>
+    <ul>
+      <li>The first column has: 'c4 phone-hide tablet-c6'</li>
+      <li>The second column has: 'c4 phone-c6 phone-show tablet-hide'</li>
+      <li>The third column is a simple 'c4'</li>
+      <li>On the second row below, the first column gets hidden for both phone and tablet.</li>
+    </ul>
+    <section class="grid-fluid">
+      <span class="c4 phone-hide tablet-c6"><small>4/6/phone-hide</small></span>
+      <span class="c4 phone-c6 phone-show tablet-hide"><small>4/tablet-hide/phone-show 6</small></span>
+      <span class="c4 phone-c6 tablet-c6"><small>4/6/6</small></span>
+      <div class="clear"></div>
+
+      <span class="c2 phone-hide tablet-hide">Hidden on phone/tablet</span>
+      <span class="c2 tablet-c12 phone-c12">not hidden</span>
+      <span class="c2 tablet-c12 phone-c12">not hidden</span>
+      <span class="c2 tablet-c12 phone-c12">not hidden</span>
+      <span class="c2 tablet-c12 phone-c12">not hidden</span>
+      <span class="c2 tablet-c12 phone-c12">not hidden</span>
       <div class="clear"></div>
     </section>
   </article>
