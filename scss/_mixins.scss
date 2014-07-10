@@ -43,7 +43,6 @@
     $multiplier: $i - 1;
     $column-size: $unicorn-grid-fluid-gutter;
 
-    // @return ($column-size + (($column-size + 2) * $multiplier)) * $fluid-unit + ($fluid-unit * 4);
     @return ($column-size + (($column-size + 2) * $multiplier)) * $fluid-unit + ($fluid-unit * 3);
 }
 
