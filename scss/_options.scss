@@ -1,15 +1,21 @@
 //////////////////////////////////////////////////////////
 // BASE DEFAULTS /////////////////////////////////////////
 //////////////////////////////////////////////////////////
-$unicorn-grid-namespace: '.grid' !default;
-$unicorn-grid-after-namespace: '.a' !default;
-$unicorn-grid-before-namespace: '.b' !default;
-$unicorn-grid-column-namespace: '.c' !default;  //EX c1, c2, c3, etc. for column class.
+$unicorn-grid-dot: '.' !default;
+$unicorn-grid-before: 'b' !default;
+$unicorn-grid-after: 'a' !default;
+$unicorn-grid-column: 'c' !default;
+$unicorn-grid-mobile: 'phone' !default;
+$unicorn-grid-tablet: 'tablet' !default;
 
-$unicorn-grid-small-namespace: '.phone' !default;
-$unicorn-grid-tablet-namespace: '.tablet' !default;
-$unicorn-grid-small-column-namespace: #{$unicorn-grid-small-namespace}-c !default;  //EX phone-c1, phone-c2, phone-c3, etc. for phone column class.
-$unicorn-grid-tablet-column-namespace: #{$unicorn-grid-tablet-namespace}-c !default;  //EX table-c1, tablet-c2, tablet-c3, etc. for tablet column class.
+$unicorn-grid-column-namespace: #{$unicorn-grid-dot}#{$unicorn-grid-column} !default;  //EX c1, c2, c3, etc. for column class.
+$unicorn-grid-namespace: #{$unicorn-grid-dot}grid !default; //EX .grid
+$unicorn-grid-after-namespace: #{$unicorn-grid-dot}#{$unicorn-grid-after} !default;  //EX .a
+$unicorn-grid-before-namespace: #{$unicorn-grid-dot}#{$unicorn-grid-before} !default;//EX .b
+$unicorn-grid-small-namespace: #{$unicorn-grid-dot}#{$unicorn-grid-mobile} !default; //EX .phone
+$unicorn-grid-tablet-namespace: #{$unicorn-grid-dot}#{$unicorn-grid-tablet} !default;//EX .tablet
+$unicorn-grid-small-column-namespace: #{$unicorn-grid-small-namespace}-#{$unicorn-grid-column} !default;  //EX phone-c1, phone-c2, phone-c3, etc. for phone column class.
+$unicorn-grid-tablet-column-namespace: #{$unicorn-grid-tablet-namespace}-#{$unicorn-grid-column} !default;  //EX table-c1, tablet-c2, tablet-c3, etc. for tablet column class.
 $unicorn-grid-num-columns: 12 !default;
 
 
