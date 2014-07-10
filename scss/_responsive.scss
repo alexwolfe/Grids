@@ -31,11 +31,11 @@
     #{$unicorn-grid-namespace}-fixed, #{$unicorn-grid-namespace}-fluid {
 
 
-        //////////////////////////////////////////////////
-        // PHONE FALLBACK ////////////////////////////////
+        ///////////////////////////////////////////////////////////
+        // PHONE & TABLET FALLBACK ////////////////////////////////
         // If they don't use phone-X or tablet-X, it
         // falls back to this.
-        //////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////
         @media handheld and (max-width: $unicorn-grid-small-breakpoint),
         screen and (max-width: $unicorn-grid-small-breakpoint),
         screen and (max-width: $unicorn-grid-tablet-breakpoint) {
@@ -63,9 +63,12 @@
         //////////////////////////////////////////////
         @media handheld and (max-width: $unicorn-grid-tablet-breakpoint),
         screen and (max-width: $unicorn-grid-tablet-breakpoint) {
+            $before: #{$unicorn-grid-tablet-namespace}-#{$unicorn-grid-before};
+            $after: #{$unicorn-grid-tablet-namespace}-#{$unicorn-grid-after};
+
             @include grid-tablet;
             @include clearfix;
-            @include fluid-grid-specific ($unicorn-grid-tablet-column-namespace);
+            @include fluid-grid-specific ($unicorn-grid-tablet-column-namespace, $before, $after);
 
             //VISIBILITY
             @include showHide ($unicorn-grid-tablet-namespace);
@@ -77,9 +80,12 @@
         
         @media handheld and (max-width: $unicorn-grid-small-breakpoint),
         screen and (max-width: $unicorn-grid-small-breakpoint) {
+            $before: #{$unicorn-grid-small-namespace}-#{$unicorn-grid-before};
+            $after: #{$unicorn-grid-small-namespace}-#{$unicorn-grid-after};
+
             @include grid-phone;
             @include clearfix;
-            @include fluid-grid-specific ($unicorn-grid-small-column-namespace);
+            @include fluid-grid-specific ($unicorn-grid-small-column-namespace, $before, $after);
 
             //VISIBILITY
             @include showHide ($unicorn-grid-small-namespace);
