@@ -1,9 +1,9 @@
 {
   "name": "Grids",
-  "version": "0.30",
+  "version": "0.1-alpha",
   "homepage": "https://github.com/alexwolfe/Grids",
   "authors": [
-    "alexwolfe", 
+    "alexwolfe",
     "roblevintennis"
   ],
   "description": "A highly customizable CSS Grid Framework built with Sass",
