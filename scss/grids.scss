@@ -67,6 +67,15 @@
     @for $i from 1 through $unicorn-grid-num-columns {
         #{$columnNamespace}#{$i} {
             width: calculate-fluid-column($i, $fluid-unit);
+
+            &.nb,
+            &.na {
+                width: calculate-fluid-column($i, $fluid-unit) + $fluid-unit;
+            }
+
+            &.na.nb {
+                width: calculate-fluid-column($i, $fluid-unit) + ($fluid-unit * 2);
+            }
         }
 
         @if ($beforeNamespace) {
@@ -143,6 +152,15 @@
     @for $i from 1 through $unicorn-grid-num-columns {
         #{$unicorn-grid-column-namespace}#{$i} {
             width: calculate-fixed-column($i, $column-width);
+
+            &.nb,
+            &.na {
+                width: calculate-fixed-column($i, $column-width) + $unicorn-grid-fixed-margin;
+            }
+
+            &.na.nb {
+                width: calculate-fixed-column($i, $column-width) + ($unicorn-grid-fixed-margin * 2);
+            }
         }
 
         #{$unicorn-grid-before-namespace}#{$i} {
